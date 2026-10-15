@@ -17,30 +17,41 @@
  *                  [{ src: "captions/m1l2-en.vtt", lang: "en", label: "English" }]
  *                YouTube videos use YouTube's own CC button when captions exist.
  *
+ * CREDIT FIELDS (shown under the video; fill them in for every real video)
+ *   videoTitle:  the video's own title
+ *   creator:     channel or author name
+ *   creatorUrl:  link to the creator's channel
+ *   sourceUrl:   link to the original video page
+ *   attribution: extra attribution text if the license requires it
+ *   note:        short honest note about how well the video matches the lesson
+ *   reason:      for lessons WITHOUT a video, why (shown in the placeholder)
+ *   more:        [{ title, creator, url }] related videos shown as plain links
+ * The full evidence register (license, embed check, verification status) is in VIDEO-CREDITS.md.
+ *
  * Lessons for Modules 03 to 12 are not written yet. Their IDs are reserved here so
  * videos can be attached the moment the lessons are added.
  */
 window.LESSON_VIDEOS = {
 
   /* Module 00 — Welcome to AI Website Launch */
-  m0l1: { url: "" },  // Welcome: What You Will Build
-  m0l2: { url: "" },  // How the Course and the Platform Work
-  m0l3: { url: "" },  // How AI Fits In: Your Development Partner
-  m0l4: { url: "" },  // Your First Mini Challenge: Choose a Project Idea
+  m0l1: {"url": "", "reason": "This lesson introduces this specific course, so no outside video can teach it. Record it from the transcript below."},  // Welcome: What You Will Build
+  m0l2: {"url": "", "reason": "This lesson is a tour of this platform, so no outside video can teach it. Record it from the transcript below."},  // How the Course and the Platform Work
+  m0l3: {"url": "", "reason": "No verified video matched this lesson closely enough. The transcript and activities below cover it."},  // How AI Fits In: Your Development Partner
+  m0l4: {"url": "", "reason": "This lesson is a hands-on activity inside this platform, so no outside video fits."},  // Your First Mini Challenge: Choose a Project Idea
 
   /* Module 01 — How Modern Websites Work */
-  m1l1: { url: "" },  // What a Website Actually Is
-  m1l2: { url: "" },  // What Happens When You Type a URL
-  m1l3: { url: "" },  // HTML, CSS and JavaScript: The Three Layers
-  m1l4: { url: "" },  // Servers, Hosting, Domains and HTTPS
-  m1l5: { url: "" },  // APIs, Databases and Choosing an Architecture
+  m1l1: {"url": "https://www.youtube.com/watch?v=vcRmKtL4o_4", "videoTitle": "How Websites Work | simply explained with examples", "creator": "TechWorld with Nana", "creatorUrl": "https://www.youtube.com/@TechWorldwithNana", "sourceUrl": "https://www.youtube.com/watch?v=vcRmKtL4o_4"},  // What a Website Actually Is
+  m1l2: {"url": "https://www.youtube.com/watch?v=AlkDbnbv7dk", "videoTitle": "What happens when you type a URL into your browser?", "creator": "ByteByteGo", "creatorUrl": "https://www.youtube.com/@ByteByteGo", "sourceUrl": "https://www.youtube.com/watch?v=AlkDbnbv7dk"},  // What Happens When You Type a URL
+  m1l3: {"url": "https://www.youtube.com/watch?v=ok-plXXHlWw", "videoTitle": "HTML in 100 Seconds", "creator": "Fireship", "creatorUrl": "https://www.youtube.com/@Fireship", "sourceUrl": "https://www.youtube.com/watch?v=ok-plXXHlWw", "note": "Covers HTML only. Watch the related CSS and JavaScript videos below for the other two layers.", "more": [{"title": "CSS in 100 Seconds", "creator": "Fireship", "url": "https://www.youtube.com/watch?v=OEV8gMkCHXQ"}, {"title": "JavaScript in 100 Seconds", "creator": "Fireship", "url": "https://www.youtube.com/watch?v=DHjqpvDnNGE"}]},  // HTML, CSS and JavaScript: The Three Layers
+  m1l4: {"url": "", "reason": "No video from an official or established source could be verified for hosting, domains and HTTPS together."},  // Servers, Hosting, Domains and HTTPS
+  m1l5: {"url": "https://www.youtube.com/watch?v=Qw8qVSZEWBc", "videoTitle": "What Is an API? Types, Uses, & AI Integration", "creator": "IBM Technology", "creatorUrl": "https://www.youtube.com/@IBMTechnology", "sourceUrl": "https://www.youtube.com/watch?v=Qw8qVSZEWBc", "note": "Covers APIs. Databases are explained in the lesson text."},  // APIs, Databases and Choosing an Architecture
 
   /* Module 02 — AI Fundamentals for Web Creation */
-  m2l1: { url: "" },  // What Generative AI Is, and What It Is Not
-  m2l2: { url: "" },  // The Anatomy of a Great Prompt
-  m2l3: { url: "" },  // The Prompt Builder
-  m2l4: { url: "" },  // Iterating, Debugging and Reviewing AI Code
-  m2l5: { url: "" },  // AI for Design and Copywriting
+  m2l1: {"url": "https://www.youtube.com/watch?v=o3YCjK7bWHI", "videoTitle": "What are AI 'hallucinations' and can we fix LLMs so that they don't happen?", "creator": "Microsoft Developer", "creatorUrl": "https://www.youtube.com/@MicrosoftDeveloper", "sourceUrl": "https://www.youtube.com/watch?v=o3YCjK7bWHI"},  // What Generative AI Is, and What It Is Not
+  m2l2: {"url": "https://www.youtube.com/watch?v=ysPbXH0LpIE", "videoTitle": "Prompting 101 | Code w/ Claude", "creator": "Anthropic", "creatorUrl": "https://www.youtube.com/@anthropic-ai", "sourceUrl": "https://www.youtube.com/watch?v=ysPbXH0LpIE"},  // The Anatomy of a Great Prompt
+  m2l3: {"url": "", "reason": "This lesson uses this platform's own Prompt Builder, so no outside video fits."},  // The Prompt Builder
+  m2l4: {"url": "", "reason": "No verified video matched debugging and reviewing AI-generated code closely enough."},  // Iterating, Debugging and Reviewing AI Code
+  m2l5: {"url": "", "reason": "No verified video matched AI-assisted design and copywriting closely enough."},  // AI for Design and Copywriting
 
   /* Module 03 — Website Strategy */
   m3l1: { url: "" },
@@ -79,7 +90,7 @@ window.LESSON_VIDEOS = {
   m6l6: { url: "" },
 
   /* Module 07 — Accessibility & Quality */
-  m7l1: { url: "" },
+  m7l1: {"url": "https://www.youtube.com/watch?v=3f31oufqFSM", "videoTitle": "Web Accessibility Perspectives - Compilation of 10 Topics/Videos", "creator": "W3C Web Accessibility Initiative (WAI)", "creatorUrl": "https://www.youtube.com/@w3c-wai", "sourceUrl": "https://www.youtube.com/watch?v=3f31oufqFSM", "note": "Provisional match: Module 07 lessons are not written yet, so check this still fits when they are."},
   m7l2: { url: "" },
   m7l3: { url: "" },
   m7l4: { url: "" },
@@ -87,7 +98,7 @@ window.LESSON_VIDEOS = {
   m7l6: { url: "" },
 
   /* Module 08 — SEO & Performance */
-  m8l1: { url: "" },
+  m8l1: {"url": "https://www.youtube.com/watch?v=_0QOePCkyK4", "videoTitle": "Google Search Explained - Search for Beginners Ep 4", "creator": "Google Search Central", "creatorUrl": "https://www.youtube.com/@GoogleSearchCentral", "sourceUrl": "https://www.youtube.com/watch?v=_0QOePCkyK4", "note": "Provisional match: Module 08 lessons are not written yet, so check this still fits when they are."},
   m8l2: { url: "" },
   m8l3: { url: "" },
   m8l4: { url: "" },

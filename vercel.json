@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/app.html", "destination": "/app/", "permanent": true },
+    { "source": "/learn", "destination": "/app/", "permanent": false },
+    { "source": "/learn/", "destination": "/app/", "permanent": false }
+  ]
+}

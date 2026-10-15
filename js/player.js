@@ -119,6 +119,27 @@
     var stage = el("div", { class: "vp-stage" });
     root.appendChild(stage); root.appendChild(note);
 
+    /* ---------- credits: video title, creator, source link, attribution ---------- */
+    function link(href, text) { return el("a", { href: href, target: "_blank", rel: "noopener noreferrer" }, text); }
+    function buildCredits() {
+      if (!(cfg.videoTitle || cfg.creator || cfg.sourceUrl)) return null;
+      var line = el("p", { class: "vp-credit" }, "Video: ");
+      if (cfg.videoTitle) line.appendChild(document.createTextNode("\u201C" + cfg.videoTitle + "\u201D"));
+      if (cfg.creator) { line.appendChild(document.createTextNode(" by ")); line.appendChild(cfg.creatorUrl ? link(cfg.creatorUrl, cfg.creator) : document.createTextNode(cfg.creator)); }
+      if (cfg.sourceUrl) { line.appendChild(document.createTextNode(" \u00B7 ")); line.appendChild(link(cfg.sourceUrl, "Watch at the original source \u2197")); }
+      var box = el("div", { class: "vp-credits" }, line);
+      if (cfg.attribution) box.appendChild(el("p", { class: "vp-credit-sub" }, cfg.attribution));
+      box.appendChild(el("p", { class: "vp-credit-sub" }, "Embedded with the creator's permission settings. This video is not produced by AI Website Launch."));
+      if (cfg.note) box.appendChild(el("p", { class: "vp-credit-note" }, cfg.note));
+      if (cfg.more && cfg.more.length) {
+        var more = el("p", { class: "vp-credit-sub" }, "Related: ");
+        cfg.more.forEach(function (m, i) { if (i) more.appendChild(document.createTextNode(" \u00B7 ")); more.appendChild(link(m.url, m.title + (m.creator ? " (" + m.creator + ")" : ""))); });
+        box.appendChild(more);
+      }
+      return box;
+    }
+    var creditsEl = buildCredits();
+
     /* ---------- placeholder ---------- */
     if (src.kind === "none" || src.kind === "invalid") {
       var invalid = src.kind === "invalid";
@@ -127,7 +148,7 @@
         el("strong", {}, invalid ? "This video link can't be played" : "No video for this lesson yet"),
         el("p", {}, invalid
           ? "The link is not a YouTube address or a direct .mp4, .webm or .ogv file. The lesson transcript and all activities below still work."
-          : "The full lesson transcript and every activity are below. This page will show the video here once one is added.")));
+          : (cfg.reason || "The full lesson transcript and every activity are below. This page will show the video here once one is added."))));
       root.classList.add("vp-none");
       return { el: root, destroy: function () {}, kind: src.kind };
     }
@@ -229,6 +250,7 @@
       on(window, "pagehide", function () { track(video.currentTime, video.duration); persist(true); });
       setCaptions(false); updatePlayUI();
 
+      if (creditsEl) root.appendChild(creditsEl);
       return {
         el: root, kind: "file", video: video,
         destroy: function () {
@@ -295,6 +317,7 @@
     var onHide = function () { poll(); persist(true); };
     window.addEventListener("pagehide", onHide); cleanup.push(function () { window.removeEventListener("pagehide", onHide); });
 
+    if (creditsEl) root.appendChild(creditsEl);
     return {
       el: root, kind: "youtube",
       destroy: function () {
